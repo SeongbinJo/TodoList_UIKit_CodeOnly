@@ -29,6 +29,8 @@ class TodoListMainViewController: UIViewController, AddTodoViewControllerDelegat
         self.navigationItem.rightBarButtonItems = [addTodoButton]
         
         setupTableView()
+        
+        TodoDataManager.manager.loadTodos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +55,7 @@ class TodoListMainViewController: UIViewController, AddTodoViewControllerDelegat
     
     func saveTodo(_ todo: TodoModel) {
         TodoDataManager.manager.addTodo(newTodo: todo)
+        TodoDataManager.manager.saveTodos()
         tableView.reloadData()
     }
     
@@ -74,5 +77,14 @@ extension TodoListMainViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            TodoDataManager.manager.removeTodo(index: indexPath.row)
+            
+            // 테이블 뷰에서 행 삭제
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            TodoDataManager.manager.saveTodos()
+        }
+    }
 }

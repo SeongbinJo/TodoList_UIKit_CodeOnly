@@ -31,9 +31,27 @@ class TodoDataManager {
         todoList.append(newTodo)
     }
     
+    
+    // UserDefaults 사용한 메소드
+    func saveTodos() {
+        let encoder = JSONEncoder()
+        if let encodedTodos = try? encoder.encode(todoList) {
+            UserDefaults.standard.set(encodedTodos, forKey: "todos")
+        }
+    }
+    
+    func loadTodos() {
+        if let savedTodos = UserDefaults.standard.object(forKey: "todos") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedTodos = try? decoder.decode([TodoModel].self, from: savedTodos) {
+                todoList = loadedTodos
+                print("불러오기 완료")
+            }
+        }
+    }
+    
     func removeTodo(index: Int) {
         todoList.remove(at: index)
     }
-    
     
 }

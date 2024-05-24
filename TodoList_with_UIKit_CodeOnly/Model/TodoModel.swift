@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TodoModel: Identifiable {
+class TodoModel: Identifiable, Codable {
     var id: UUID
     var body: String
     var date: Date
