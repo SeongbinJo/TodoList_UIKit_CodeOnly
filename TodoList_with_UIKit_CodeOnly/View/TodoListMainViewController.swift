@@ -7,9 +7,7 @@
 
 import UIKit
 
-class TodoListMainViewController: UIViewController {
-    var sampleTodoList: SampleTodoListData = SampleTodoListData()
-    
+class TodoListMainViewController: UIViewController, AddTodoViewControllerDelegate {
     private lazy var tableView = UITableView()
     
     override func viewDidLoad() {
@@ -25,9 +23,6 @@ class TodoListMainViewController: UIViewController {
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        // 더미 데이터 생성
-        sampleTodoList.createSampleTodoData()
 
         let addTodoButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTodoButtonTapped))
         addTodoButton.tintColor = .white
@@ -36,29 +31,46 @@ class TodoListMainViewController: UIViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     @objc func addTodoButtonTapped() {
         print("addTodoButton Clicked.")
+        let addTodoViewController = AddTodoViewController()
+        addTodoViewController.delegate = self
+        present(addTodoViewController, animated: true)
     }
     
     func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TodoListTableViewCell.self, forCellReuseIdentifier: "cell")
         
         view.addSubview(tableView)
     }
     
+    func saveTodo(_ todo: TodoModel) {
+        TodoDataManager.manager.addTodo(newTodo: todo)
+        tableView.reloadData()
+    }
+    
 }
 
 
-extension TodoListMainViewController: UITableViewDataSource {
+extension TodoListMainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sampleTodoList.sampleList.count
+        TodoDataManager.manager.countOfTodoList()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TodoListTableViewCell
-        cell.configure(todo: sampleTodoList.sampleList[indexPath.row])
+        cell.configure(todo: TodoDataManager.manager.getTodo(index: indexPath.row))
         return cell
     }
     

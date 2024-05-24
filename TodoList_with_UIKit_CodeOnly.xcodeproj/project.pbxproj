@@ -16,6 +16,9 @@
 		5881EF352C00159700157833 /* TodoListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881EF342C00159700157833 /* TodoListMainViewController.swift */; };
 		5881EF372C001D5400157833 /* TodoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881EF362C001D5400157833 /* TodoListTableViewCell.swift */; };
 		5881EF3A2C001D8700157833 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881EF392C001D8700157833 /* TodoModel.swift */; };
+		5881EF3C2C0027A600157833 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881EF3B2C0027A600157833 /* AddTodoViewController.swift */; };
+		58E4626F2C004A1700812574 /* TodoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E4626E2C004A1700812574 /* TodoDataManager.swift */; };
+		58E462722C004CF600812574 /* AddTodoViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E462712C004CF600812574 /* AddTodoViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		5881EF342C00159700157833 /* TodoListMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListMainViewController.swift; sourceTree = "<group>"; };
 		5881EF362C001D5400157833 /* TodoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewCell.swift; sourceTree = "<group>"; };
 		5881EF392C001D8700157833 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		5881EF3B2C0027A600157833 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		58E4626E2C004A1700812574 /* TodoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDataManager.swift; sourceTree = "<group>"; };
+		58E462712C004CF600812574 /* AddTodoViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 				5881EF232C00139A00157833 /* ViewController.swift */,
 				5881EF332C00157900157833 /* View */,
 				5881EF382C001D7400157833 /* Model */,
+				58E462702C004CDA00812574 /* Delegate */,
 				5881EF252C00139A00157833 /* Main.storyboard */,
 				5881EF282C00139B00157833 /* Assets.xcassets */,
 				5881EF2A2C00139B00157833 /* LaunchScreen.storyboard */,
@@ -80,6 +87,7 @@
 			children = (
 				5881EF342C00159700157833 /* TodoListMainViewController.swift */,
 				5881EF362C001D5400157833 /* TodoListTableViewCell.swift */,
+				5881EF3B2C0027A600157833 /* AddTodoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -88,8 +96,17 @@
 			isa = PBXGroup;
 			children = (
 				5881EF392C001D8700157833 /* TodoModel.swift */,
+				58E4626E2C004A1700812574 /* TodoDataManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		58E462702C004CDA00812574 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				58E462712C004CF600812574 /* AddTodoViewControllerDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,8 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58E462722C004CF600812574 /* AddTodoViewControllerDelegate.swift in Sources */,
 				5881EF242C00139A00157833 /* ViewController.swift in Sources */,
+				5881EF3C2C0027A600157833 /* AddTodoViewController.swift in Sources */,
 				5881EF202C00139A00157833 /* AppDelegate.swift in Sources */,
+				58E4626F2C004A1700812574 /* TodoDataManager.swift in Sources */,
 				5881EF352C00159700157833 /* TodoListMainViewController.swift in Sources */,
 				5881EF3A2C001D8700157833 /* TodoModel.swift in Sources */,
 				5881EF372C001D5400157833 /* TodoListTableViewCell.swift in Sources */,
