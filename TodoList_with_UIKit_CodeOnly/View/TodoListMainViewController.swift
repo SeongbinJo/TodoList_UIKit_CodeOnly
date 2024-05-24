@@ -77,6 +77,13 @@ extension TodoListMainViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedTodo = TodoDataManager.manager.getTodo(index: indexPath.row)
+        TodoDataManager.manager.changeIsComplete(todo: selectedTodo)
+        TodoDataManager.manager.saveTodos()
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             TodoDataManager.manager.removeTodo(index: indexPath.row)

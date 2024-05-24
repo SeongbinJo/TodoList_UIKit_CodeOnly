@@ -31,6 +31,10 @@ class TodoDataManager {
         todoList.append(newTodo)
     }
     
+    func changeIsComplete(todo: TodoModel) {
+        todo.isComplete.toggle()
+    }
+    
     
     // UserDefaults 사용한 메소드
     func saveTodos() {
@@ -53,5 +57,14 @@ class TodoDataManager {
     func removeTodo(index: Int) {
         todoList.remove(at: index)
     }
+    
+    // 유저디폴트 저장된 값 json 형식 출력
+//    func printSavedTodos() {
+//        if let savedTodos = UserDefaults.standard.object(forKey: "todos") as? Data {
+//            if let jsonString = String(data: savedTodos, encoding: .utf8) {
+//                print(jsonString)
+//            }
+//        }
+//    }
     
 }

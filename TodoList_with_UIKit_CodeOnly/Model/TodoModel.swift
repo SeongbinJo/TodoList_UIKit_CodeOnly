@@ -13,17 +13,18 @@ class TodoModel: Identifiable, Codable {
     var date: Date
     var isComplete: Bool
     
-    var dateString: String {
-        let formatted = DateFormatter()
-        formatted.dateFormat = "yy.MM.dd"
-        return formatted.string(from: date)
-    }
-    
     init(id: UUID, body: String, date: Date, isComplete: Bool) {
         self.id = id
         self.body = body
         self.date = date
         self.isComplete = isComplete
+    }
+    
+    // 값이 존재하므로 UserDefaults에 저장되지 않는다.
+    var dateString: String {
+        let formatted = DateFormatter()
+        formatted.dateFormat = "yy.MM.dd"
+        return formatted.string(from: date)
     }
     
 }
